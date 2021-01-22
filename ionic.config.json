@@ -1,0 +1,7 @@
+{
+  "name": "chatvi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
