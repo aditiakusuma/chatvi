@@ -2,67 +2,98 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Blank</ion-title>
+        <ion-title>Welcome</ion-title>
       </ion-toolbar>
     </ion-header>
-    
+
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="auto">
+          <div class="ion-text-center ion-margin-top">
+            <ion-title>
+              Selamat Datang <br />
+              di ChatVi
+            </ion-title>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="auto" v-if="!isLoggedIn">
+          <ion-button @click="signInwithGoogle">
+            <ion-icon slot="start" :icon="logoGoogle"></ion-icon>
+            Login with Google
+          </ion-button>
+        </ion-col>
+        <ion-col size="auto" v-else>
+          <ion-button color="success" @click="() => router.push('/friends')">
+            <ion-icon slot="start" :icon="chatbubble"></ion-icon>
+            Go Chat
+          </ion-button>
+          <ion-button color="danger" @click="signOut">
+            <ion-icon slot="start" :icon="logOut"></ion-icon>
+            Log Out
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { defineComponent } from 'vue';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonButton,
+  IonIcon,
+  IonRow,
+  IonCol,
+} from "@ionic/vue";
+import { logoGoogle, chatbubble, logOut } from "ionicons/icons";
+import { computed, defineComponent } from "vue";
+import { useStore } from "vuex";
+import router from "../router";
 
 export default defineComponent({
-  name: 'Home',
+  name: "Home",
   components: {
     IonContent,
     IonHeader,
     IonPage,
     IonTitle,
-    IonToolbar
-  }
+    IonToolbar,
+    IonButton,
+    IonIcon,
+    IonRow,
+    IonCol,
+  },
+
+  setup() {
+    const store = useStore();
+    // const router = useRouter();
+
+    const signInwithGoogle = () => {
+      store.dispatch("SET_USER");
+    };
+
+    const signOut = () => {
+      store.dispatch("LOGOUT");
+    };
+
+    const isLoggedIn = computed(() => store.getters.isLoggedIn);
+    return {
+      logoGoogle,
+      signInwithGoogle,
+      chatbubble,
+      isLoggedIn,
+      router,
+      logOut,
+      signOut,
+    };
+  },
 });
 </script>
 
-<style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-</style>
+<style scoped></style>
