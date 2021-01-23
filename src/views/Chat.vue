@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
+    <ion-header :translucent="true" class="ion-no-border">
       <ion-toolbar color="primary">
         <ion-buttons slot="start">
           <ion-back-button defaultHref="/home"></ion-back-button>
@@ -20,7 +20,7 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content :fullscreen="true" class="ion-padding">
+    <ion-content class="ion-padding">
       <div v-if="store.state.chat.chatMessages.length === 0">
         <ion-text>
           You have no conversation with {{ currentChat.displayName }}
@@ -42,7 +42,7 @@
         </p>
       </div>
     </ion-content>
-    <ion-footer>
+    <ion-footer class="ion-no-border">
       <div class="input-message">
         <ion-row class="ion-no-padding ion-align-items-center">
           <ion-col size="10" class="ion-no-padding">
@@ -157,10 +157,11 @@ export default defineComponent({
 }
 
 .input-message {
-  border: 2px solid grey;
+  border: 1px solid grey;
   border-radius: 30px;
   padding-left: 12px;
   margin: 2px 12px;
+  background-color: white;
 }
 
 .chat__message {
@@ -209,11 +210,7 @@ export default defineComponent({
   font-size: xx-small;
 }
 
-ion-footer {
-  background-color: white;
-}
-
 ion-content {
-  --background: var(--ion-color-primary);
+  --background: var(--ion-color-medium);
 }
 </style>

@@ -9,6 +9,5 @@
       "launchShowDuration": 0
     }
   },
-  "cordova": {},
-  "linuxAndroidStudioPath": "/home/aditiakusuma/Downloads/Compressed/android-studio/android-studio/bin/studio.sh"
+  "cordova": {}
 }
