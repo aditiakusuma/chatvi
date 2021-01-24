@@ -55,6 +55,7 @@ import { logoGoogle, chatbubble, logOut } from "ionicons/icons";
 import { computed, defineComponent } from "vue";
 import { useStore } from "vuex";
 import router from "../router";
+import { GooglePlus } from "@ionic-native/google-plus";
 
 export default defineComponent({
   name: "Home",
@@ -75,7 +76,18 @@ export default defineComponent({
     // const router = useRouter();
 
     const signInwithGoogle = () => {
-      store.dispatch("SET_USER");
+      GooglePlus.login({
+        webClientId:
+          "729986428725-iva1btkjrobck7l2rbjr8344pstdhd5s.apps.googleusercontent.com",
+      }).then(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+      // store.dispatch("SET_USER");
     };
 
     const signOut = () => {

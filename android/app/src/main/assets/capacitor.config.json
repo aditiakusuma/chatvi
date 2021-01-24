@@ -9,5 +9,10 @@
       "launchShowDuration": 0
     }
   },
-  "cordova": {}
+  "cordova": {
+    "preferences":{
+      "android-minSdkVersion":"15"
+    }
+  },
+  "linuxAndroidStudioPath": "/home/aditiakusuma/Downloads/Compressed/android-studio/android-studio/bin/studio.sh"
 }

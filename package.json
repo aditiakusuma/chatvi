@@ -12,8 +12,11 @@
   "dependencies": {
     "@capacitor/android": "^2.4.6",
     "@capacitor/core": "2.4.6",
+    "@ionic-native/core": "^5.30.0",
+    "@ionic-native/google-plus": "^5.30.0",
     "@ionic/vue": "^5.4.0",
     "@ionic/vue-router": "^5.4.0",
+    "cordova-plugin-googleplus": "^8.5.1",
     "core-js": "^3.6.5",
     "firebase": "^8.2.4",
     "vue": "^3.0.0-0",
